@@ -43,12 +43,7 @@ struct AddBookView: View {
                 
                 Section("Write a review") {
                     TextEditor(text: $review)
-                    
-                    Picker("Raiting", selection: $rating) {
-                        ForEach(0..<6) {
-                            Text(String($0))
-                        }
-                    }
+                    RatingView(rating: $rating)
                 }
                 
                 Section {
