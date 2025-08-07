@@ -14,18 +14,10 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var rating = 3
-    @State private var genre = "Fantasy"
+    @State private var genre = Genre.fantasy.description
     @State private var review = ""
     
-    let genres = [
-            "Fantasy",
-            "Horror",
-            "Kids",
-            "Mystery",
-            "Poetry",
-            "Romance",
-            "Thriller"
-        ]
+    let genres = Genre.allCases
     
     var body: some View {
         NavigationStack {
@@ -36,7 +28,7 @@ struct AddBookView: View {
                     
                     Picker("Genre", selection: $genre) {
                         ForEach(genres, id: \.self) {
-                            Text($0)
+                            Text($0.description)
                         }
                     }
                 }
@@ -49,10 +41,10 @@ struct AddBookView: View {
                 Section {
                     Button("Save") {
                         let newBook = Book(
-                            title: title,
-                            author: author,
-                            genre: genre,
-                            review: review,
+                            title: title.withDefault(BookDefaults.title),
+                            author: author.withDefault(BookDefaults.author),
+                            genre: genre.withDefault(BookDefaults.genre.description),
+                            review: review.withDefault(BookDefaults.review),
                             rating: rating
                         )
                         modelContext.insert(newBook)
