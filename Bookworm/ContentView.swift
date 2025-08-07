@@ -10,7 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var books: [Book]
+    @Query(
+        sort: [
+            SortDescriptor(\Book.title),
+            SortDescriptor(\Book.authhor)
+        ]
+    ) var books: [Book]
     
     @State private var showingAddScreen = false
     
@@ -32,20 +37,20 @@ struct ContentView: View {
                     }
                 }
             }
-                .navigationTitle("Bookworm")
-                .navigationDestination(for: Book.self) { book in
-                    DetailView(book: book)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("AddBook", systemImage: "plus") {
-                            showingAddScreen.toggle()
-                        }
+            .navigationTitle("Bookworm")
+            .navigationDestination(for: Book.self) { book in
+                DetailView(book: book)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("AddBook", systemImage: "plus") {
+                        showingAddScreen.toggle()
                     }
                 }
-                .sheet(isPresented: $showingAddScreen) {
-                    AddBookView()
-                }
+            }
+            .sheet(isPresented: $showingAddScreen) {
+                AddBookView()
+            }
         }
     }
 }
