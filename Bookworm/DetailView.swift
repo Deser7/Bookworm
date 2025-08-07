@@ -42,14 +42,14 @@ struct DetailView: View {
         .navigationTitle(book.title)
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)
-        .alert("Delete book", isPresented: $showingDeleteAlert) {
-            Button("Delete", role: .destructive,action: deleteBook)
-            Button("Cancel", role: .cancel) {}
+        .alert("Удалить книгу", isPresented: $showingDeleteAlert) {
+            Button("Удалить", role: .destructive,action: deleteBook)
+            Button("Закрыть", role: .cancel) {}
         } message: {
-            Text("Are your sure?")
+            Text("Вы уверенны?")
         }
         .toolbar {
-            Button("Delete this book?", systemImage: "trash") {
+            Button("Удалить эту книгу?", systemImage: "trash") {
                 showingDeleteAlert = true
             }
         }
@@ -65,10 +65,10 @@ struct DetailView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Book.self, configurations: config)
     let example = Book(
-        title: "Test Book",
-        author: "Test Author",
-        genre: "Fantasy",
-        review: "This was a great book!",
+        title: "Тестовая книга",
+        author: "Тестовый автор",
+        genre: "Фантастика",
+        review: "Это лучшая книга!",
         rating: 4
     )
     

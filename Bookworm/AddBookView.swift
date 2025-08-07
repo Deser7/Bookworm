@@ -23,23 +23,23 @@ struct AddBookView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Name of book", text: $title)
-                    TextField("Author's name", text: $author)
+                    TextField("Название книги", text: $title)
+                    TextField("Имя автора", text: $author)
                     
-                    Picker("Genre", selection: $genre) {
+                    Picker("Жанр", selection: $genre) {
                         ForEach(genres, id: \.self) {
                             Text($0.description)
                         }
                     }
                 }
                 
-                Section("Write a review") {
+                Section("Напишите отзыв") {
                     TextEditor(text: $review)
                     RatingView(rating: $rating)
                 }
                 
                 Section {
-                    Button("Save") {
+                    Button("Сохранить") {
                         let newBook = Book(
                             title: title.withDefault(BookDefaults.title),
                             author: author.withDefault(BookDefaults.author),
@@ -52,7 +52,7 @@ struct AddBookView: View {
                     }
                 }
             }
-            .navigationTitle("Add book")
+            .navigationTitle("Добавить книгу")
         }
     }
 }

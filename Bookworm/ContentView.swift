@@ -40,7 +40,7 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteBooks)
             }
-            .navigationTitle("Bookworm")
+            .navigationTitle("Книжный червь")
             .navigationDestination(for: Book.self) { book in
                 DetailView(book: book)
             }
@@ -49,7 +49,7 @@ struct ContentView: View {
                     EditButton()
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("AddBook", systemImage: "plus") {
+                    Button("Добавить книгу", systemImage: "plus") {
                         showingAddScreen.toggle()
                     }
                 }
