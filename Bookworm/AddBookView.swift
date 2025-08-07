@@ -18,14 +18,14 @@ struct AddBookView: View {
     @State private var review = ""
     
     let genres = [
-        "Fantasy",
-        "Horror",
-        "Kids",
-        "Mystery",
-        "Poetry",
-        "Romance",
-        "Thriller"
-    ]
+            "Fantasy",
+            "Horror",
+            "Kids",
+            "Mystery",
+            "Poetry",
+            "Romance",
+            "Thriller"
+        ]
     
     var body: some View {
         NavigationStack {
@@ -50,7 +50,7 @@ struct AddBookView: View {
                     Button("Save") {
                         let newBook = Book(
                             title: title,
-                            authhor: author,
+                            author: author,
                             genre: genre,
                             review: review,
                             rating: rating

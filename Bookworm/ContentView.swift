@@ -13,7 +13,7 @@ struct ContentView: View {
     @Query(
         sort: [
             SortDescriptor(\Book.title),
-            SortDescriptor(\Book.authhor)
+            SortDescriptor(\Book.author)
         ]
     ) var books: [Book]
     
@@ -23,16 +23,18 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(books) { book in
-                    HStack {
-                        EmojiRatingView(rating: book.rating)
-                            .font(.headline)
-                        
-                        VStack(alignment: .leading) {
-                            Text(book.title)
+                    NavigationLink(value: book) {
+                        HStack {
+                            EmojiRatingView(rating: book.rating)
                                 .font(.headline)
                             
-                            Text(book.authhor)
-                                .foregroundStyle(.secondary)
+                            VStack(alignment: .leading) {
+                                Text(book.title)
+                                    .font(.headline)
+                                
+                                Text(book.author)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }
