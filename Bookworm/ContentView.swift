@@ -36,6 +36,7 @@ struct ContentView: View {
                                     .foregroundStyle(.secondary)
                             }
                         }
+                        .foregroundStyle(book.rating == 1 ? .red : .primary)
                     }
                 }
                 .onDelete(perform: deleteBooks)

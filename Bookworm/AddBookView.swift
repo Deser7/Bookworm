@@ -14,7 +14,7 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var rating = 3
-    @State private var genre = Genre.fantasy.description
+    @State private var genre: Genre = .fantasy
     @State private var review = ""
     
     let genres = Genre.allCases
@@ -43,7 +43,7 @@ struct AddBookView: View {
                         let newBook = Book(
                             title: title.withDefault(BookDefaults.title),
                             author: author.withDefault(BookDefaults.author),
-                            genre: genre.withDefault(BookDefaults.genre.description),
+                            genre: genre.description,
                             review: review.withDefault(BookDefaults.review),
                             rating: rating
                         )

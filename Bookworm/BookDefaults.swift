@@ -39,7 +39,6 @@ extension String {
 struct BookDefaults {
     static let title = "Без названия"
     static let author = "Неизвестный автор"
-    static let genre: Genre = .fantasy
     static let review = "Отзыв отсутствует..."
     
 }
