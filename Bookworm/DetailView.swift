@@ -38,6 +38,14 @@ struct DetailView: View {
             
             RatingView(rating: .constant(book.rating))
                 .font(.largeTitle)
+            
+            HStack {
+                Image(systemName: "calendar")
+                    .foregroundStyle(.secondary)
+                Text(book.date, style: .date)
+                    .foregroundStyle(.secondary)
+            }
+            .padding()
         }
         .navigationTitle(book.title)
         .navigationBarTitleDisplayMode(.inline)
@@ -53,6 +61,7 @@ struct DetailView: View {
                 showingDeleteAlert = true
             }
         }
+        .environment(\.locale, Locale(identifier: "ru_RU"))
     }
     
     func deleteBook() {
